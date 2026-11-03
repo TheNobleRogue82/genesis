@@ -3,7 +3,7 @@
 
 GENESIS is a browser-based, AI-directed interactive artwork where a visitor's **actual spoken words** become luminous typography, then matter, then a navigable universe. It is intended as a flagship creative-technology portfolio experience.
 
-> **Status:** Creative direction and implementation plan. No production implementation yet.
+> **Status:** Phase 0 browser prototype implemented. Visual acceptance and real-device performance review remain open; this is not a production release.
 
 ## The non-negotiable experience
 1. Enter a visually restrained void.
@@ -30,10 +30,28 @@ GENESIS is a browser-based, AI-directed interactive artwork where a visitor's **
 - [docs/REFERENCES.md](docs/REFERENCES.md) — references, licensing and research
 - [references/](references/) — original SVG conceptual reference boards, not final renders
 
-## Suggested local setup
-Repository: `https://github.com/TheNobleRogue82/genesis`
+## Run the Shader Lab
 
-The initial Codex task is to create a Vite + TypeScript + Three.js shader lab, **after** reading `AGENTS.md`, `docs/SHADER_LAB.md`, and `docs/CREATIVE_DIRECTION.md`. Prefer custom shaders and a lightweight rendering core; add React only if there is a justified UI need.
+Requires Node.js 22.12+ (validated with Node.js 24.22.1).
+
+```sh
+npm ci
+npm run dev -- --port 5173
+```
+
+Open the local Vite server on port 5173. Click **Release matter** for the 22-second transformation. Drag/touch to orbit, scroll/pinch to approach, and scrub the timeline to inspect any phase. **Space** toggles playback; **H** hides the interface; **Escape** restores it.
+
+Open **Laboratory** for flow strength, starlight, 20k/48k particle quality, camera presets, PNG capture and WebM recording. The discovery camera approaches the original alignment; a subset of the same particles reorders into the phrase. Recording captures only the artwork, without interface or audio. Reduced-motion visitors start with a still and can scrub or explicitly play.
+
+```sh
+npm run build        # TypeScript and production bundle
+npm run preview      # Serve the production bundle
+npm run review       # Browser checks, screenshots and video; dev server must be running
+```
+
+The review script uses `/usr/bin/chromium` by default; override with `CHROMIUM_PATH`. It writes generated output to ignored `artifacts/`. Chromium software rendering is enabled for cloud validation; real-device GPU profiling is still required. See [Phase 0 review](docs/PHASE_0_REVIEW.md) for evidence, reproduction settings and limitations.
+
+No microphone, AI backend, external imagery, downloaded fonts, accounts or API keys are used. Typography uses the browser's system Georgia/serif stack; glyph sampling can differ across operating systems.
 
 ## Principles
 - **Visual artistry first.** Every frame should be worth examining.
