@@ -27,6 +27,7 @@ GENESIS is a browser-based, AI-directed interactive artwork where a visitor's **
 - [docs/ROADMAP.md](docs/ROADMAP.md) — stages and acceptance gates
 - [docs/SHADER_LAB.md](docs/SHADER_LAB.md) — first implementation brief
 - [docs/TEST_AND_REVIEW.md](docs/TEST_AND_REVIEW.md) — visual and performance evaluation
+- [docs/VOLUMETRIC_STUDY.md](docs/VOLUMETRIC_STUDY.md) — original GLSL study and next rendering experiment (not integrated)
 - [docs/REFERENCES.md](docs/REFERENCES.md) — references, licensing and research
 - [references/](references/) — original SVG conceptual reference boards, not final renders
 

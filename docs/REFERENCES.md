@@ -25,3 +25,7 @@ These boards are conceptual vector sketches made for GENESIS; they are **not** s
 
 ## Research rule
 Record source URL, creator, license, date checked, intended use and whether any code or assets were adapted before committing third-party material.
+
+## Original rendering study
+
+[Light between the stars](VOLUMETRIC_STUDY.md) contains original GLSL documentation code for bounded procedural density and emission/absorption integration, with an explicit particle-provenance and performance review contract. No external shader code or assets are incorporated in that study. General concepts such as ray integration, deterministic fields and scale-aware rendering are research directions; the code remains separate from the running prototype until independently integrated and visually reviewed.

@@ -47,3 +47,7 @@ Initial captures exposed early loss of legibility, noisy rediscovery and tight m
 | Performance | Two draw calls, static GPU attributes and capped resolution. Actual device budgets and automatic adaptive resolution remain open. |
 
 Three strongest qualities: negative space and restraint; genuine geometry continuity; reproducible, inspectable interaction. Three main flaws: regular spiral density, granular typography and overly explicit recognition. Next visual iteration should refine dust/arm density and intermediate filament pacing, test a word-level recognition approach, and measure actual desktop/mobile GPUs before creative sign-off. No microphone or AI integration was added.
+
+## Follow-up documentation
+
+The [original volumetric study](VOLUMETRIC_STUDY.md) records a proposed density-and-light experiment and GLSL reference. It does not change the runtime or supersede the measurements above. Dust absorption, shared medium deformation and depth-aware particle composition remain unimplemented.
