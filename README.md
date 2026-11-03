@@ -1,7 +1,7 @@
 # GENESIS
 **Speak, and let the universe begin.**
 
-GENESIS is a browser-based, AI-directed interactive artwork where a visitor's **actual spoken words** become luminous typography, then matter, then a navigable universe. It is intended as a flagship creative-technology portfolio experience for [RichGue.com](https://richgue.com).
+GENESIS is a browser-based, AI-directed interactive artwork where a visitor's **actual spoken words** become luminous typography, then matter, then a navigable universe. It is intended as a flagship creative-technology portfolio experience.
 
 > **Status:** Creative direction and implementation plan. No production implementation yet.
 
@@ -12,9 +12,8 @@ GENESIS is a browser-based, AI-directed interactive artwork where a visitor's **
 4. Watch those letterforms physically transform into stars, dust, nebulae and galaxies.
 5. Explore the resulting universe freely, from galaxy-scale inspection to immersive traversal.
 6. Discover originating language subtly embedded in its cosmic structures.
-7. Choose **Begin Again** to erase the current local universe and speak anew. No repeated voice commands within a creation.
+7. Choose **Begin Again** to erase the current local universe and speak anew. 
 
-**No camera, avatar, chatbot, mandatory narrative, or time-limited exploration.**
 
 ## First objective: prove beauty
 **Do not start with the AI backend.** Build **Genesis Shader Lab** first: one phrase -> animated typography -> continuous particle transformation -> convincing 3D galaxy -> interactive camera -> subtle rediscovery of letterforms. If this is merely a functional particle demo, the milestone has **not** passed.
