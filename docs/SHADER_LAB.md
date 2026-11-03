@@ -41,6 +41,6 @@ Capture frames at **origin**, **filament**, **release**, **formation**, **explor
 ## Stop condition
 Do not advance to voice/AI integration unless Rich has approved the actual appearance and interactivity. If re-emergent typography looks gimmicky, experiment with restrained alternatives.
 
-## Next rendering experiment: participating medium
+## Current rendering experiment: participating medium
 
-Use the [original volumetric study](VOLUMETRIC_STUDY.md) as an implementation reference for irregular arm density, restrained core light and absorbing dust. It is documentation code, not an existing runtime feature. Keep the current word-derived particles, shared seed and timeline; avoid introducing an independent replacement galaxy. First compare medium-off/on at the same camera and exposure, then evaluate intermediate transformation states and device frame times before expanding navigation or visual scope.
+Use the [original volumetric study](VOLUMETRIC_STUDY.md) as an implementation reference for irregular arm density, restrained core light and absorbing dust. The analytic example remains documentation code; the runtime now uses a GPU density atlas from the same word-derived particles. See [the volume iteration review](VOLUME_ITERATION_REVIEW.md) for checks and remaining limits. Keep the current word-derived particles, shared seed and timeline; avoid introducing an independent replacement galaxy. First compare medium-off/on at the same camera and exposure, then evaluate intermediate transformation states and device frame times before expanding navigation or visual scope.

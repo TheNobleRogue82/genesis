@@ -3,7 +3,8 @@ import { mkdir, writeFile } from 'node:fs/promises';
 const out='artifacts';await mkdir(out,{recursive:true});
 const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',headless:true,args:['--no-sandbox','--disable-dev-shm-usage','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
 const context=await browser.newContext({viewport:{width:1440,height:1000},acceptDownloads:true});const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error'&&!m.text().includes('404'))errors.push(m.text());});
-await page.goto('http://127.0.0.1:5173');await page.waitForFunction(()=>window.genesis?.state.drawCalls===2);
+await page.goto('http://127.0.0.1:5173');await page.waitForFunction(()=>window.genesis?.state.drawCalls>=2);
+await page.locator('details').evaluate(el=>el.open=true);await page.selectOption('#medium','on');await page.locator('details').evaluate(el=>el.open=false);
 const scrub=async value=>{await page.locator('#progress').fill(String(value));await page.locator('#progress').dispatchEvent('input');await page.waitForTimeout(350);};
 const metrics=[];
 for(const [name,value] of [['origin',0],['filament',.23],['release',.43],['formation',.67],['exploration',1]]){await scrub(value);await page.screenshot({path:`${out}/${name}.png`});metrics.push({name,...await page.evaluate(()=>window.genesis.state)});}

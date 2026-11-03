@@ -50,4 +50,4 @@ Three strongest qualities: negative space and restraint; genuine geometry contin
 
 ## Follow-up documentation
 
-The [original volumetric study](VOLUMETRIC_STUDY.md) records a proposed density-and-light experiment and GLSL reference. It does not change the runtime or supersede the measurements above. Dust absorption, shared medium deformation and depth-aware particle composition remain unimplemented.
+The [original volumetric study](VOLUMETRIC_STUDY.md) records a proposed density-and-light experiment and GLSL reference. It does not change the runtime or supersede the measurements above. Those features were subsequently added experimentally; see [the volume iteration review](VOLUME_ITERATION_REVIEW.md). The measurements in this file describe the earlier particle-only baseline.

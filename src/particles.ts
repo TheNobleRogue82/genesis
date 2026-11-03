@@ -28,11 +28,14 @@ export function createParticles(config:LabConfig) {
  const geometry=new THREE.BufferGeometry(); geometry.setAttribute('position',new THREE.BufferAttribute(origin,3)); geometry.setAttribute('aTarget',new THREE.BufferAttribute(target,3)); geometry.setAttribute('aMeta',new THREE.BufferAttribute(meta,4));
  return geometry;
 }
-export const vertexShader=`
-uniform float uProgress,uTime,uSize,uPixelRatio,uFlow,uReveal; attribute vec3 aTarget; attribute vec4 aMeta; varying vec3 vColor; varying float vAlpha;
-void main(){
+export const particleMotion=`
+uniform float uProgress,uTime,uFlow,uReveal; attribute vec3 aTarget; attribute vec4 aMeta;
+float particleTravel(){
  float activation=smoothstep(.17+aMeta.z*.004,.76+aMeta.x*.13,uProgress);
- float travel=activation*activation*(3.-2.*activation);
+ return activation*activation*(3.-2.*activation);
+}
+vec3 particlePosition(){
+ float travel=particleTravel();
  vec3 p=mix(position,aTarget,travel);
  float envelope=sin(travel*3.14159265);
  float phase=aMeta.x*6.28318;
@@ -46,12 +49,24 @@ void main(){
  float memory=(1.-step(.3,aMeta.x))*reveal;
  p=mix(p,position*.58,memory);
  p+=vec3(sin(uTime*.25+phase),cos(uTime*.2+phase),0.)*.012*travel*(1.-reveal);
+ return p;
+}
+`;
+export const vertexShader=`
+uniform float uSize,uPixelRatio; varying vec3 vColor; varying float vAlpha;
+${particleMotion}
+#include <medium_transmission>
+void main(){
+ vec3 p=particlePosition();
+ float travel=particleTravel();
+ float reveal=uReveal*smoothstep(.75,1.,uProgress);
  vec4 mv=modelViewMatrix*vec4(p,1.); gl_Position=projectionMatrix*mv;
  gl_PointSize=clamp(uSize*uPixelRatio*(.65+aMeta.y*1.25)*22./max(3.,-mv.z),.6,7.);
  vec3 cool=vec3(.48,.67,1.); vec3 warm=vec3(1.,.76,.43);
  vColor=mix(cool,warm,smoothstep(.72,.99,aMeta.x)); vColor=mix(vec3(.83,.88,1.),vColor,travel);
  vAlpha=mix(.38,.55,travel)*(.55+aMeta.y*.7);
  vAlpha*=mix(1.,mix(.23,1.2,1.-smoothstep(.25,.35,aMeta.x)),reveal);
+ vAlpha*=mediumTransmission(p);
 }`;
 export const fragmentShader=`
 precision highp float; varying vec3 vColor; varying float vAlpha;

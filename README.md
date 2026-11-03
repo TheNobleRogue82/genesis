@@ -42,7 +42,7 @@ npm run dev -- --port 5173
 
 Open the local Vite server on port 5173. Click **Release matter** for the 22-second transformation. Drag/touch to orbit, scroll/pinch to approach, and scrub the timeline to inspect any phase. **Space** toggles playback; **H** hides the interface; **Escape** restores it.
 
-Open **Laboratory** for flow strength, starlight, 20k/48k particle quality, camera presets, PNG capture and WebM recording. The discovery camera approaches the original alignment; a subset of the same particles reorders into the phrase. Recording captures only the artwork, without interface or audio. Reduced-motion visitors start with a still and can scrub or explicitly play.
+Open **Laboratory** for flow strength, starlight, 20k/48k particle quality, atmosphere off/on, mist light, dust absorption, volume quality and camera presets, PNG capture and WebM recording. The discovery camera approaches the original alignment; a subset of the same particles reorders into the phrase. Recording captures only the artwork, without interface or audio. Reduced-motion visitors start with a still and can scrub or explicitly play.
 
 ```sh
 npm run build        # TypeScript and production bundle
@@ -51,6 +51,8 @@ npm run review       # Browser checks, screenshots and video; dev server must be
 ```
 
 The review script uses `/usr/bin/chromium` by default; override with `CHROMIUM_PATH`. It writes generated output to ignored `artifacts/`. Chromium software rendering is enabled for cloud validation; real-device GPU profiling is still required. See [Phase 0 review](docs/PHASE_0_REVIEW.md) for evidence, reproduction settings and limitations.
+
+The optional atmosphere deposits density from the same moving particles, raymarches a reduced-resolution volume and attenuates stars to their depth. It starts off on narrow screens and detected software renderers; enable **Atmosphere → Volume · on** in Laboratory. Particle-only rendering remains available. Volume quality trades sample count and render resolution for detail. See the [volume iteration review](docs/VOLUME_ITERATION_REVIEW.md) for implementation limits and comparisons.
 
 No microphone, AI backend, external imagery, downloaded fonts, accounts or API keys are used. Typography uses the browser's system Georgia/serif stack; glyph sampling can differ across operating systems.
 

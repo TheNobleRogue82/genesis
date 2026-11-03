@@ -28,11 +28,11 @@ flowchart TD
 - Navigation: orbit overview + immersive fly camera; smooth continuous transition, prevent clipping and disorientation.
 - Debug: deterministic seed, test phrase, camera bookmarks, profile and capture settings.
 
-## Proposed volumetric refinement (not implemented)
+## Experimental volumetric refinement
 
-The current Shader Lab renders point particles; it does not yet integrate an absorbing/emitting medium. The [original volumetric study](VOLUMETRIC_STUDY.md) provides a bounded GLSL reference and integration contract. Add medium density around the same forming arms, share the particle seed and deformation, and preserve per-particle word provenance. Composite linear radiance and transmission with particle depths before final tone mapping; a full-volume overlay cannot correctly order interleaved stars and dust.
+The Shader Lab renders point particles plus an optional absorbing/emitting medium derived from a fixed subset of those particles. The [original volumetric study](VOLUMETRIC_STUDY.md) provides a bounded GLSL reference and integration contract. GPU deposition shares the exact particle deformation and preserves character/word associations. The runtime raymarches that density field and evaluates transmission to each star depth. Composite linear radiance and transmission with particle depths before final tone mapping; a full-volume overlay cannot correctly order interleaved stars and dust.
 
-Start by comparing a reduced-resolution volume pass with a particle-only fallback. Measure sample-count and resolution tradeoffs on actual devices. The reference's density field, sample budgets and color choices are experiment settings, not validated production behavior.
+Start by comparing a reduced-resolution volume pass with a particle-only fallback. Measure sample-count and resolution tradeoffs on actual devices. The documentation reference is analytic; runtime density is particle-deposited. Current budgets and color choices remain experimental; see [the volume iteration review](VOLUME_ITERATION_REVIEW.md).
 
 ## Backend (later phase, not in Shader Lab)
 - Cloudflare Workers for authentication-free gated endpoint, rate limits, input validation, API-key protection and orchestration.

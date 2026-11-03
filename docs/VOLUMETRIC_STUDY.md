@@ -1,6 +1,6 @@
 # Original study: light between the stars
 
-**Status:** documentation reference, not an effect currently running in the Shader Lab. This study was written for GENESIS using general procedural rendering and light-transport principles. No external shader source or assets are included or adapted.
+**Status:** the analytic shader below remains a standalone documentation reference. The runtime now implements a related particle-deposited medium; see [the iteration review](VOLUME_ITERATION_REVIEW.md). This study was written for GENESIS using general procedural rendering and light-transport principles. No external shader source or assets are included or adapted.
 
 ## Purpose
 
@@ -120,3 +120,7 @@ Accept this experiment only if dust creates depth without hiding authentic text,
 ## Code validation
 
 The shader block compiled and linked in Chromium 155 / WebGL2 with SwiftShader. A 32 × 32 smoke render produced zero RGBA output at `uMatter = 0` and nonzero output at `uMatter = 1` for 16, 24 and 40 samples, without GL errors. This checks basic execution only: it does not establish artistic quality, correct composition with particles, cross-device performance or integration into the app.
+
+## Runtime implementation
+
+`src/volume.ts` follows the emission/absorption principles above but replaces the analytic galaxy field with a GPU density atlas deposited from 6,000 actual glyph-derived particles. Both deposition and the stars call the same `particlePosition()` function, including intermediate motion, flow and rediscovery. This gives the volume shared provenance and deformation rather than an independent galaxy shape. Particle transmission is sampled to each star's depth. Density is coarse and undersampled, so this is still a visual experiment, not exact radiative transfer.
